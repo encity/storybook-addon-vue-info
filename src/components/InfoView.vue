@@ -12,6 +12,9 @@ module.exports = {
     propsList: {
       type: Array,
       required: true
+    },
+    story: {
+      type: Object
     }
   }
 }
@@ -46,6 +49,23 @@ module.exports = {
           <td>{{prop.default}}</td>
           <td>{{prop.desc}}</td>
         </tr>
+      </tbody>
+    </table>
+    <h2 v-if="story.events">Events</h2>
+    <table class="props" v-if="story.events">
+      <thead class="props-head">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="event in story.events" :key="event.name">
+        <td>
+          {{event.name}}
+        </td>
+        <td>{{event.desc}}</td>
+      </tr>
       </tbody>
     </table>
   </div>
