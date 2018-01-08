@@ -12,6 +12,11 @@ export default {
       type: String,
       required: true
     }
+  },
+  methods: {
+    onClick () {
+      this.$emit('click', e)
+    }
   }
 }
 </script>
@@ -21,6 +26,7 @@ export default {
     class="btn"
     :class="type"
     :disabled="disabled"
+    @click="onClick"
   >{{label}}</button>
 </template>
 
