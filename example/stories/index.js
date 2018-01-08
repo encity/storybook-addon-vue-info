@@ -8,11 +8,21 @@ import BaseButton from '../src/components/BaseButton.vue'
 storiesOf('BaseButton', module)
   .addDecorator(VueInfoAddon)
   .add('global component', () => ({
-    template: '<base-button type="primary" label="global"/>'
+    template: '<base-button type="primary" label="global"/>',
+    propsDesc: {
+      disabled: 'disabled prop description',
+      type: 'type prop description',
+      label: 'label prop description'
+    }
   }))
   .add('local component', () => ({
     components: {
       LocalButton: BaseButton
+    },
+    propsDesc: {
+      disabled: 'disabled prop description',
+      type: 'type prop description',
+      label: 'label prop description'
     },
     template: '<local-button :disabled="true" label="local"/>'
   }))
