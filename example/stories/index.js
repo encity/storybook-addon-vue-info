@@ -13,6 +13,12 @@ storiesOf('BaseButton', module)
       disabled: 'disabled prop description',
       type: 'type prop description',
       label: 'label prop description'
+    },
+    events: {
+      click : {
+        name: 'click',
+        desc: "click event description"
+      }
     }
   }))
   .add('local component', () => ({

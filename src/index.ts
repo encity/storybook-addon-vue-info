@@ -35,7 +35,8 @@ const VueInfoAddon = (storyFn: () => RuntimeComponentOptions) => {
         props: {
           name: componentInfo.name,
           template: story.template,
-          propsList
+          propsList,
+          story: story
         },
         scopedSlots: {
           default: () => [h(story)]
