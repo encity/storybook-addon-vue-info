@@ -33,6 +33,7 @@ module.exports = {
           <th>Name</th>
           <th>Type</th>
           <th>Default</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
@@ -43,6 +44,7 @@ module.exports = {
           </td>
           <td>{{prop.type}}</td>
           <td>{{prop.default}}</td>
+          <td>{{prop.desc}}</td>
         </tr>
       </tbody>
     </table>

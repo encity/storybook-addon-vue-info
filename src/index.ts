@@ -27,7 +27,7 @@ const VueInfoAddon = (storyFn: () => RuntimeComponentOptions) => {
 
   const componentInfo = parseStoryComponent(story)
 
-  const propsList = getPropsInfoList(componentInfo.component)
+  const propsList = getPropsInfoList(componentInfo.component, story)
 
   return {
     render(h) {

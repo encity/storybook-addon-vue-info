@@ -5,10 +5,13 @@ import PropInfo from './types/PropInfo'
 
 /**
  * Get properties informations from component instance.
- * @param component Runtime component instance
+ * @param {RuntimeComponentOptions} component
+ * @param story
+ * @returns {PropInfo[]}
  */
-function getPropsInfoList(component: RuntimeComponentOptions): PropInfo[] {
+function getPropsInfoList(component: RuntimeComponentOptions, story: any): PropInfo[] {
   const { props } = component
+  const propsDesc = story.propsDesc ? story.propsDesc : {}
 
   if (!props) {
     return []
@@ -16,6 +19,7 @@ function getPropsInfoList(component: RuntimeComponentOptions): PropInfo[] {
 
   return Object.keys(props).map(name => {
     const prop = (props as any)[name]
+    const desc = propsDesc[name] ? propsDesc[name] : ''
 
     // If there are no props defined in Object sytle,
     // Vue does not convert "prop: Constructor" into Object style (See #3).
@@ -24,7 +28,9 @@ function getPropsInfoList(component: RuntimeComponentOptions): PropInfo[] {
         name,
         type: constructorToString(prop),
         required: false,
-        default: undefined
+        default: undefined,
+        desc: desc
+
       }
     }
 
@@ -32,7 +38,8 @@ function getPropsInfoList(component: RuntimeComponentOptions): PropInfo[] {
       name,
       type: constructorToString(prop.type),
       required: !!prop.required,
-      default: prop.default
+      default: prop.default,
+      desc: desc
     }
   })
 }
