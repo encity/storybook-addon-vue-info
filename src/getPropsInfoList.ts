@@ -38,7 +38,7 @@ function getPropsInfoList(component: RuntimeComponentOptions, story: any): PropI
       name,
       type: constructorToString(prop.type),
       required: !!prop.required,
-      default: prop.default,
+      default: typeof prop.default === 'function' ? prop.default() : prop.default,
       desc: desc
     }
   })
